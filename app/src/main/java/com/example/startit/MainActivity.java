@@ -5,11 +5,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,8 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(toolbar);
-        ArrayList<ToDoList> todoList = new ArrayList<ToDoList>();
+        //ArrayList<ToDoList> todoList = new ArrayList<ToDoList>();
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new CustomAdapter(generateData()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private List<String> generateData() {
+        List<String> data = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            data.add(String.valueOf(i) + "th Element");
+        }
+        return data;
     }
 
     @Override
