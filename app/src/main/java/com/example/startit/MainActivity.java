@@ -27,8 +27,6 @@ import java.time.LocalDateTime;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     //Generate placeholder toDoList for show
-    public static final ToDoList toDoList = generateData();
-    private static CustomAdapter recyclerAdapter = new CustomAdapter(toDoList.getToDoItems());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +34,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-
-        View itemListView = findViewById(R.id.itemListView);
-        RecyclerView recyclerView = itemListView.findViewById(R.id.recyclerView);
-        setSupportActionBar(toolbar);
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(recyclerAdapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -61,31 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_to_do);
         }
     }
-
-    public static void addToTodoList(ToDoItem toDoItem)
-    {
-        toDoList.addAnItem(toDoItem);
-        recyclerAdapter.notifyDataSetChanged();
-        Log.d("D", "Size of todoList: "+ String.valueOf(toDoList.getToDoItems().size()));
-    }
-
-    public static ToDoList getMainTodoList(){
-        return toDoList;
-    }
-
-    public void addItem(View view){
-        Intent intent = new Intent(this, AddItemActivity.class);
-        startActivity(intent);
-    }
-
-    private static ToDoList generateData() {
-        ToDoList toDoList = new ToDoList();
-        for (int i = 0; i < 2; i++) {
-            toDoList.addAnItem(new ToDoItem("Temp todo", LocalDateTime.now(), LocalDateTime.now(), Duration.ZERO, 1));
-        }
-        return toDoList;
-    }
-        
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

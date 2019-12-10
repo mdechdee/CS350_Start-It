@@ -29,7 +29,7 @@ public class AddItemActivity extends AppCompatActivity {
     public void onConfirm(View view){
         TextInputEditText inputText = findViewById(R.id.titleName);
         ToDoItem toDoItem = new ToDoItem(inputText.getText().toString(), now(), now() , Duration.ZERO, 1);
-        MainActivity.addToTodoList(toDoItem);
+        ToDoFragment.addToTodoList(toDoItem);
         finish();
     }
 }
