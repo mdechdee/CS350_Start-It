@@ -13,13 +13,13 @@ import java.time.LocalDateTime;
 import java.time.Instant;
 
 public class Exporter{
-    private Context mContext;
-    private ToDoList iToDoList;
+    private static Context mContext;
+    private static ToDoList iToDoList;
     public Exporter(Context context)
     {
         mContext = context;
     }
-    public void compose(ToDoList toDoList){
+    public static void compose(ToDoList toDoList){
         try{
             JSONObject obj = new JSONObject();
             obj.put("totalScore", toDoList.getTotalScore());
@@ -45,7 +45,7 @@ public class Exporter{
         }
     }
 
-    private JSONObject item2JObj(ToDoItem item) throws JSONException{
+    private static JSONObject item2JObj(ToDoItem item) throws JSONException{
         JSONObject obj = new JSONObject();
         obj.put("title", item.getTitle());
         obj.put("note", item.getNote());
