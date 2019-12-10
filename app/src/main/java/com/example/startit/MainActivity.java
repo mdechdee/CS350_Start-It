@@ -3,7 +3,7 @@ package com.example.startit;
 import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -14,42 +14,49 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     //Generate placeholder toDoList for show
-    public ToDoList toDoList = generateData();
-
+    public static final ToDoList toDoList = generateData();
+    private static CustomAdapter recyclerAdapter = new CustomAdapter(toDoList.getToDoItems());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
+        View itemListView = findViewById(R.id.itemListView);
+        RecyclerView recyclerView = itemListView.findViewById(R.id.recyclerView);
         setSupportActionBar(toolbar);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new CustomAdapter(toDoList.getToDoItems()));
+        recyclerView.setAdapter(recyclerAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-
-        FloatingActionButton fab = findViewById(R.id.fab);
     }
+
+    public static void addToTodoList(ToDoItem toDoItem){
+        toDoList.addAnItem(toDoItem);
+        recyclerAdapter.notifyDataSetChanged();
+        Log.d("D", toDoList.)
+    }
+
+    public static ToDoList getMainTodoList(){
+        return toDoList;
+    }
+
     public void addItem(View view){
         Intent intent = new Intent(this, AddItemActivity.class);
         startActivity(intent);
-        Log.d("DD", "addItem called");
     }
 
-    private ToDoList generateData() {
+    private static ToDoList generateData() {
         ToDoList toDoList = new ToDoList();
-        for (int i = 0; i < 5; i++) {
-            toDoList.addAnItem(new ToDoItem("T", LocalDateTime.now(), LocalDateTime.now(), Duration.ZERO, 1));
+        for (int i = 0; i < 2; i++) {
+            toDoList.addAnItem(new ToDoItem("Temp todo", LocalDateTime.now(), LocalDateTime.now(), Duration.ZERO, 1));
         }
         return toDoList;
     }

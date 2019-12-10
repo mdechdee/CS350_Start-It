@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <include
+        android:id="@+id/itemListView"
         layout="@layout/item_list_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
