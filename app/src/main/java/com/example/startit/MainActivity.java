@@ -1,5 +1,6 @@
 package com.example.startit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -9,9 +10,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -20,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     //Generate placeholder toDoList for show
-    private ToDoList toDoList = generateData();
+    public ToDoList toDoList = generateData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +33,17 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(toolbar);
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new CustomAdapter(toDoList.getToDoItems()));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+    }
+    public void addItem(View view){
+        Intent intent = new Intent(this, AddItemActivity.class);
+        startActivity(intent);
+        Log.d("DD", "addItem called");
     }
 
     private ToDoList generateData() {
