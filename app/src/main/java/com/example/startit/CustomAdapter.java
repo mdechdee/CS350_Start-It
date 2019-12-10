@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.startit.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-    private ToDoList toDoList;
-    private List<String> data;
-    public CustomAdapter (List<String> data){
-        this.data = data;
+    private ArrayList<ToDoItem> toDoItems;
+    public CustomAdapter (ArrayList<ToDoItem> data){
+        this.toDoItems = data;
     }
 
     @Override
@@ -26,13 +26,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(CustomAdapter.ViewHolder holder, int position) {
-        holder.textView.setText(this.data.get(position));
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.textView.setText(this.toDoItems.get(position).getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return this.data.size();
+        return this.toDoItems.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -13,10 +13,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    //Generate placeholder toDoList for show
+    private ToDoList toDoList = generateData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         setSupportActionBar(toolbar);
-        //ArrayList<ToDoList> todoList = new ArrayList<ToDoList>();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new CustomAdapter(generateData()));
+        recyclerView.setAdapter(new CustomAdapter(toDoList.getToDoItems()));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -42,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private List<String> generateData() {
-        List<String> data = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            data.add(String.valueOf(i) + "th Element");
+    private ToDoList generateData() {
+        ToDoList toDoList = new ToDoList();
+        for (int i = 0; i < 5; i++) {
+            toDoList.addAnItem(new ToDoItem("T", LocalDateTime.now(), LocalDateTime.now(), Duration.ZERO, 1));
         }
-        return data;
+        return toDoList;
     }
 
     @Override
