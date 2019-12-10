@@ -57,7 +57,7 @@
         android:layout_margin="@dimen/margin_no_margin_button"
         android:layout_weight="50"
         android:background="@color/colorDarkGray"
-        android:onClick="onCancle"
+        android:onClick="onConfirm"
         android:text="Confirm"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryWhite"

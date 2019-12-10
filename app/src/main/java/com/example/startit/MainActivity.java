@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static void addToTodoList(ToDoItem toDoItem){
         toDoList.addAnItem(toDoItem);
         recyclerAdapter.notifyDataSetChanged();
-        Log.d("D", toDoList.)
+        Log.d("D", "Size of todoList: "+ String.valueOf(toDoList.getToDoItems().size()));
     }
 
     public static ToDoList getMainTodoList(){
