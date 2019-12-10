@@ -131,7 +131,6 @@ public class ToDoList {
 
     public ToDoItem getItemTitled(String title) throws Exception{
 
-
         int i;
         boolean isFound = false;
 

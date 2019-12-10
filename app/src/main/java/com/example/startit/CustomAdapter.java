@@ -13,6 +13,7 @@ import com.example.startit.R;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+    private ToDoList toDoList;
     private List<String> data;
     public CustomAdapter (List<String> data){
         this.data = data;
