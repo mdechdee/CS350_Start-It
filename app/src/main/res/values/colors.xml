@@ -6,4 +6,5 @@
     <color name="colorLightGray">#adadad</color>
     <color name="colorDarkGray">#303030</color>
     <color name="colorAccent">#009688</color>
+    <color name="chipIconTint">#adadad</color>
 </resources>

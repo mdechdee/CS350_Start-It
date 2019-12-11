@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 
 public class ToDoFragment extends Fragment {
 
-    public static final ToDoList toDoList = Importer.parse();
+    public static final ToDoList toDoList = generateData();
     private static CustomAdapter recyclerAdapter = new CustomAdapter(toDoList.getToDoItems());
     RecyclerView recyclerView;
     @Nullable
