@@ -66,8 +66,8 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_item.xml">
           <provider selected="true" editor-type-id="android-designer2" />
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="6562">
-              <caret line="386" column="42" selection-start-line="386" selection-start-column="42" selection-end-line="386" selection-end-column="42" />
+            <state relative-caret-position="391">
+              <caret line="407" column="4" selection-start-line="407" selection-start-column="4" selection-end-line="407" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -120,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/startit/StatsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="248">
-              <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+              <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
               <folding>
                 <element signature="e#908#915#0" expanded="true" />
               </folding>
@@ -155,7 +155,7 @@
           <provider selected="true" editor-type-id="android-designer2" />
           <provider editor-type-id="text-editor">
             <state relative-caret-position="444">
-              <caret line="74" column="29" lean-forward="true" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
+              <caret line="74" column="29" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -226,7 +226,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="746" />
     <option name="width" value="1183" />
     <option name="height" value="1038" />
@@ -743,7 +743,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/startit/StatsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
-          <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+          <caret line="49" column="36" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
           <folding>
             <element signature="e#908#915#0" expanded="true" />
           </folding>
@@ -776,7 +776,7 @@
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="444">
-          <caret line="74" column="29" lean-forward="true" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
+          <caret line="74" column="29" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -787,8 +787,8 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_add_item.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="6562">
-          <caret line="386" column="42" selection-start-line="386" selection-start-column="42" selection-end-line="386" selection-end-column="42" />
+        <state relative-caret-position="391">
+          <caret line="407" column="4" selection-start-line="407" selection-start-column="4" selection-end-line="407" selection-end-column="4" />
         </state>
       </provider>
     </entry>
