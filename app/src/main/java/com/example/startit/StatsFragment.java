@@ -53,11 +53,11 @@ public class StatsFragment extends Fragment {
         LineChart chart = (LineChart) getActivity().findViewById(R.id.chart);
         List<Entry> entries = new ArrayList<Entry>();
         Duration totalTime = Duration.ZERO;
-        // This is to create graph of X-axis as duedate for each todos and Y-axis as accumulated estimatedTime
+        // This is to create graph of X-axis as duedate (day) for each todos and Y-axis as accumulated estimatedTime
         for (ToDoItem toDoItem : toDoList.getToDoItems()) {
             // turn toDoItems into Entry objects
             totalTime = totalTime.plus(toDoItem.getEstimatedTime());
-            entries.add(new Entry(toDoItem.getDueDate().toEpochSecond(ZoneOffset.UTC), totalTime.toHours()));
+            entries.add(new Entry((int) (toDoItem.getDueDate().toEpochSecond(ZoneOffset.UTC) / 86400), totalTime.toHours()));
         }
         LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
         dataSet.setColor(R.color.colorPrimaryWhite);
