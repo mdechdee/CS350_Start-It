@@ -13,7 +13,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import java.time.Duration;
+import java.time.LocalDateTime;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ToDoFragment extends Fragment {
@@ -63,10 +64,10 @@ public class ToDoFragment extends Fragment {
     }
 
     private static ToDoList generateData() {
-        ToDoList toDoList = new ToDoList();
-        /*for (int i = 0; i < 2; i++) {
+        ToDoList toDoList = Importer.parse();
+        for (int i = 0; i < 2; i++) {
             toDoList.addAnItem(new ToDoItem("Temp todo", LocalDateTime.now(), LocalDateTime.now(), Duration.ZERO, 1));
-        }*/
+        }
         return toDoList;
     }
 
