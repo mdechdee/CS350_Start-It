@@ -35,13 +35,13 @@ import java.time.Instant;
 //  }
 
 public class Importer{
-    private Context mContext;
-    private ToDoList iToDoList;
+    private static Context mContext;
+    private static ToDoList iToDoList;
     public Importer(Context context)
     {
         mContext = context;
     }
-    public ToDoList parse(){
+    public static ToDoList parse(){
         try{
             InputStream internalStorage = mContext.getAssets().open("internalStorage.json");
 
@@ -75,7 +75,7 @@ public class Importer{
         return iToDoList;
     }
 
-    private ToDoItem jObj2Item(JSONObject obj) throws JSONException{
+    private static ToDoItem jObj2Item(JSONObject obj) throws JSONException{
         JSONArray tagArray = obj.getJSONArray("tags");
         ArrayList<String> tags = new ArrayList<String>();
         for(int i=0; i<tagArray.length(); i++)
