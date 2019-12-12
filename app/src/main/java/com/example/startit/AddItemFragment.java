@@ -1,15 +1,18 @@
 package com.example.startit;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -42,6 +45,15 @@ public class AddItemFragment extends Fragment {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(new SpinnerActivity());
+        //Setup onclick listener for date picker button on the layout
+        Button datePickerButton = view.findViewById(R.id.datePickerButton);
+        datePickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePicker(v);
+            }
+        });
+
         //Setup onclick listener for discard button on the layout
         Button discardButton = view.findViewById(R.id.discardButton);
         discardButton.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +62,7 @@ public class AddItemFragment extends Fragment {
                 onCancle(v);
             }
         });
+
         //Setup onclick listener for confirm button on the layout
         Button confirmButton = view.findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +71,7 @@ public class AddItemFragment extends Fragment {
                 onConfirm(v);
             }
         });
+
         //Setup tags input listener for adding new tags
         final ChipGroup chipGroup = view.findViewById(R.id.chipGroup);
         EditText editText = view.findViewById(R.id.inputCategories);
@@ -90,12 +104,28 @@ public class AddItemFragment extends Fragment {
         });
     }
 
+    public void showDatePicker(View view){
+        final EditText inputDeadline = (EditText) getActivity().findViewById(R.id.inputDeadline);
+        DatePickerDialog dd = new DatePickerDialog(getActivity());
+        dd.setOnDateSetListener(
+            new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    inputDeadline.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                }
+            }
+        );
+        dd.show();
+
+    }
+
     public void onCancle(View view){
         getFragmentManager().popBackStack();
     }
     public void onConfirm(View view){
-        TextInputEditText inputText = getView().findViewById(R.id.titleName);
-        ToDoItem toDoItem = new ToDoItem(inputText.getText().toString(), now(), now() , Duration.ZERO, 1);
+        TextInputEditText inputTitle = getView().findViewById(R.id.titleName);
+
+        ToDoItem toDoItem = new ToDoItem(inputTitle.getText().toString(), now(), now() , Duration.ZERO, 1);
         ToDoFragment.addToTodoList(toDoItem);
         getFragmentManager().popBackStack();
     }
