@@ -48,14 +48,16 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/titleName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginHorizontal="12dp"
                 android:backgroundTint="@color/colorPrimaryWhite"
                 android:fontFamily="@font/comfortaa"
-                android:gravity="center|fill_vertical"
+                android:gravity="center|center_horizontal"
                 android:inputType="text"
                 android:maxLines="1"
+                android:paddingHorizontal="8dp"
                 android:singleLine="true"
                 android:text="New Todo"
                 android:textAlignment="center"
@@ -122,6 +124,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimaryWhite"
                         android:hint="Enter deadline"
+                        android:inputType="date|datetime"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryWhite"
                         android:textColorHighlight="@color/colorAccent"
@@ -189,6 +192,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimaryWhite"
                         android:hint="Enter time of completion"
+                        android:inputType="time"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryWhite"
                         android:textColorHighlight="@color/colorAccent"
@@ -286,6 +290,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimaryWhite"
                         android:hint="Enter categories"
+                        android:inputType="textShortMessage"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryWhite"
                         android:textColorHighlight="@color/colorAccent"
@@ -333,14 +338,15 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="114dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/colorPrimaryWhite"
-                        android:hint="Enter time passed"
+                        android:focusable="false"
+                        android:hint="Time passed"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryWhite"
                         android:textColorHighlight="@color/colorAccent"
-                        android:textColorHint="@color/colorLightGray"
+                        android:textColorHint="@color/colorPrimaryWhite"
                         android:textSize="12sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
