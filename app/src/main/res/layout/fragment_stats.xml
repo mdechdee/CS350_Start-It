@@ -19,39 +19,172 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/comfortaa_bold"
-        android:text="Statistics"
+        android:text="Analytics"
         android:textColor="@color/colorPrimaryWhite"
         android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="24dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="24dp"
-    android:layout_marginBottom="24dp"
-    android:background="@color/colorPrimaryDark"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView6"
-    app:layout_constraintVertical_bias="0.0"
-    tools:itemCount="5"
-    tools:listitem="@layout/item_view" />
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:overScrollMode="always"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:srcCompat="@android:drawable/ic_dialog_email" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/colorDarkGray"
+                app:cardCornerRadius="30dp"
+                app:contentPadding="12dp">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Time needed to finish all upcoming todos "
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/colorPrimaryWhite" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="176dp"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/colorDarkGray"
+                app:cardCornerRadius="30dp"
+                app:contentPadding="12dp">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Score"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/colorPrimaryWhite" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="48dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Average relative completion time"
+                        android:textColor="@color/colorPrimaryWhite" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="00:00"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Time spent working today"
+                        android:textColor="@color/colorPrimaryWhite" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="00:00"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Time spent working in the last 7 days"
+                        android:textColor="@color/colorPrimaryWhite" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="00:00"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/holo_red_dark" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Average time spent working per day"
+                        android:textColor="@color/colorPrimaryWhite" />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="00:00"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@android:color/holo_red_dark" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_margin="8dp"
+                app:cardBackgroundColor="@color/colorDarkGray"
+                app:cardCornerRadius="30dp"
+                app:contentPadding="12dp">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Predictions"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/colorPrimaryWhite" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
