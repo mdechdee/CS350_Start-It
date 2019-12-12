@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,10 +18,17 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import java.time.Duration;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class StatsFragment extends Fragment {
+    ToDoList toDoList = ToDoFragment.toDoList;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,11 +37,27 @@ public class StatsFragment extends Fragment {
 
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+        this.initializeGraph();
+
+        TextView avgRelativeTime = view.findViewById(R.id.avgRelativeTime);
+        TextView timeToday = view.findViewById(R.id.timeToday);
+        TextView timeLastSevenDays = view.findViewById(R.id.timeLastSevenDays);
+        TextView avgTimePerDay = view.findViewById(R.id.avgTimePerDay);
+
+        timeLastSevenDays.setText(StatsCalc.getTimeSpentInAWeekAgo(toDoList).toString());
+        //avgTimePerDay.setText(StatsCalc.getTimeSpentInTheApp(toDoList).dividedBy(toDoList.getToDoItems().size()).toString());
+
+    }
+
+    private void initializeGraph(){
         LineChart chart = (LineChart) getActivity().findViewById(R.id.chart);
         List<Entry> entries = new ArrayList<Entry>();
-        for (int i = 0 ; i<= 6 ; i ++) {
-            // turn your data into Entry objects
-            entries.add(new Entry(i, i*i));
+        Duration totalTime = Duration.ZERO;
+        // This is to create graph of X-axis as duedate for each todos and Y-axis as accumulated estimatedTime
+        for (ToDoItem toDoItem : toDoList.getToDoItems()) {
+            // turn toDoItems into Entry objects
+            totalTime = totalTime.plus(toDoItem.getEstimatedTime());
+            entries.add(new Entry(toDoItem.getDueDate().toEpochSecond(ZoneOffset.UTC), totalTime.toHours()));
         }
         LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
         dataSet.setColor(R.color.colorPrimaryWhite);
