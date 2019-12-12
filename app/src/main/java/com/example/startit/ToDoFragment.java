@@ -6,18 +6,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
 
 public class ToDoFragment extends Fragment {
 
@@ -62,8 +59,7 @@ public class ToDoFragment extends Fragment {
     }
 
     public void addItem(View view){
-        Intent intent = new Intent(getActivity(), AddItemActivity.class);
-        startActivity(intent);
+        ((MainActivity) getActivity()).replaceFragment(new AddItemFragment());
     }
 
     private static ToDoList generateData() {
