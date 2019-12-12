@@ -3,6 +3,7 @@
     package="com.example.startit">
 
     <application
+        android:name="com.example.startit.StaticContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

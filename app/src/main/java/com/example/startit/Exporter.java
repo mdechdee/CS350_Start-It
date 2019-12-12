@@ -13,12 +13,8 @@ import java.time.LocalDateTime;
 import java.time.Instant;
 
 public class Exporter{
-    private static Context mContext;
     private static ToDoList iToDoList;
-    public Exporter(Context context)
-    {
-        mContext = context;
-    }
+    public Exporter(){}
     public static void compose(ToDoList toDoList){
         try{
             JSONObject obj = new JSONObject();
@@ -33,7 +29,7 @@ public class Exporter{
             }
             obj.put("toDoItems", jsonArray);
 
-            OutputStreamWriter internalStorage = new OutputStreamWriter(mContext.openFileOutput("internalStorage.json", Context.MODE_PRIVATE));
+            OutputStreamWriter internalStorage = new OutputStreamWriter(StaticContext.getAppContext().openFileOutput("internalStorage.json", Context.MODE_PRIVATE));
             internalStorage.write(obj.toString());
             internalStorage.close();
         }

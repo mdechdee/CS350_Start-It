@@ -35,15 +35,13 @@ import java.time.Instant;
 //  }
 
 public class Importer{
-    private static Context mContext;
     private static ToDoList iToDoList;
     public Importer(Context context)
     {
-        mContext = context;
     }
     public static ToDoList parse(){
         try{
-            InputStream internalStorage = mContext.getAssets().open("internalStorage.json");
+            InputStream internalStorage = StaticContext.getAppContext().getAssets().open("internalStorage.json");
 
             int length = internalStorage.available();
             byte[] buffer = new byte[length];
